@@ -1,11 +1,11 @@
 const inputBox = document.querySelector('.input-field');
 const outputBox = document.querySelector('.output-field');
-const translationButton = document.querySelector('translate-btn');
+const translationButton = document.querySelector('.translate-btn');
 
-const getURI = "	https://api.funtranslations.com/translate/dothraki.json";
+const getURI = "https://api.funtranslations.com/translate/dothraki.json";
 
 function translateURI(text){
-    return `${text}?text=${text}`
+    return `${getURI}?text=${text}`
 }
 
 function errorHandler(error){
@@ -14,11 +14,11 @@ function errorHandler(error){
 
 
 function translateText(){
- let inputText = inputBox.nodeValue;
+ let inputText = inputBox.value;
  let completeURI = translateURI(inputText);
 
  fetch(completeURI)
- .then(res=>res.json())
+ .then(response=>response.json())
  .then(json=> outputBox.value = json.contents.translated)
  .catch(errorHandler);
 
