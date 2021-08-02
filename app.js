@@ -10,6 +10,9 @@ function translateURI(text){
 
 function errorHandler(error){
     console.log("Error occured of following type:",error);
+    outputBox.innerText = "404 Not Found! Please try again later."
+    outputBox.style.color = "red"
+    outputBox.style.fontSize = "1.2em";
 }
 
 
@@ -19,7 +22,9 @@ function translateText(){
 
  fetch(completeURI)
  .then(response=>response.json())
- .then(json=> outputBox.value = json.contents.translated)
+ .then(json=> {outputBox.innerText = json.contents.translated;
+                outputBox.style.color = "#3e1404";
+                outputBox.style.fontSize = "1.2em";})
  .catch(errorHandler);
 
 }
